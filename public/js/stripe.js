@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 // je vide mon panier 
                 od.UpdatePayment();
                 new Refresh([]);
-                // document.location.href = 'index.php?action=success'
+                document.location.href = 'index.php?action=success'
             }
         })
     })
