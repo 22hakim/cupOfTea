@@ -1,3 +1,4 @@
 *à faire*
-1) pouvoir supprimer un produit du panier -> product.js -> removeProduct();
-2) pouvoir vider le panier entierement -> gerer l'evenement qui appelle clearCart() dans cart.js
+1) lorsque le paiement est effectué vider le panier
+2) mettre a jour le statut de la commande en payé 
+3) pouvoir afficher les anciennes commandes dans son compte 

@@ -35,6 +35,9 @@ export default class Order{
 
 
         }
+
+        // je redirige vers le paiement
+        document.location.href = `index.php?action=paiement&orderId=${orderId}`;
     }
 
     UpdatePayment(amount,orderNumber) 

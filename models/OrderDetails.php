@@ -45,9 +45,38 @@ class OrderDetails extends Connect{
                         ':id'=> $idProduct
                     ]); 
         $value = $q->fetch(PDO::FETCH_ASSOC);
+
         return $value['price'];
         // on peut pratiquement proceder au paiement 
         
+    }
+
+
+    public function recupOrderDetail(int $idOrder)
+    {
+        // preparation 
+        $sql = "SELECT `product_id`, `quantity_ordered`, `price` 
+                FROM `orderDetails` 
+                WHERE `order_id` = :orderId";
+        $q = $this->_pdo->prepare($sql);
+        $q->execute([
+                        ':orderId' => $idOrder
+                    ]);  
+        
+        return $q->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function recupTotalAmount(int $idOrder){
+
+        $prices = $this->recupOrderDetail($_GET['orderId']);
+
+        $totalamount = 0;
+        foreach ($prices as $price) {
+            $totalamount += $price["quantity_ordered"]*$price["price"];
+        }
+
+        return $totalamount;
+
     }
     
     public function updateOrder(array $data){

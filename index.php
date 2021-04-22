@@ -4,7 +4,7 @@ session_start();
 Use CupOftea\Autoloader;
 Use CupOftea\Core\{Cookies,Https};
 Use CupOftea\Controller\{FormController, AjaxController};
-Use CupOftea\Models\{Product,Category,User,Orders};
+Use CupOftea\Models\{Product,Category,User,Orders,OrderDetails};
 
 require_once 'Core/Autoloader.php';
 
@@ -143,6 +143,21 @@ elseif(array_key_exists('action',$_GET)){
         case 'order':
                         
             $path = 'order.php';
+        break;
+        // page qui va gerer mon paiement 
+        case 'paiement':
+            if(array_key_exists('orderId',$_GET)){
+                $od = new OrderDetails();
+                $totalamount = $od->recupTotalAmount($_GET['orderId']);
+                require_once './controller/PaiementController.php';
+
+            }else{
+                $http->redirect('index.php?action=order'); 
+            }
+            $path = 'paiement.php';
+        break;
+        case 'success':
+            $path = 'success.php';
         break;
         default:
         $http->redirect('index.php');
