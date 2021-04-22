@@ -1,6 +1,6 @@
+<h2>Commande numero <span><?= $_GET['orderId'] ?></span></h2>
 
-
-<form action="">
+<form class = "stripe-form">
     <div>
         <p id="total-amount" data-amount="<?= $totalamount?>">Montant à payer : <?= $totalamount?> €</p>   
     </div>

@@ -27,7 +27,19 @@ class Orders extends Connect{
     
     public function updateOrder(array $data){
         
+        $sql = "UPDATE `orders` 
+                SET 
+                    `amount`= :amount,
+                    `paid`= :paid
+                WHERE `id` = :id";
+        $q = $this->_pdo->prepare($sql);
+        $q->execute([
+                        ':amount' => $data['amount'],
+                        ':paid'   => $data['paid'],
+                        ':id'     => $data['order_id']
+                    ]);  
         
+        return 'commande payée';
         
     }
 

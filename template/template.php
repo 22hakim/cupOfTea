@@ -107,7 +107,7 @@
         <?php if(array_key_exists("action",$_GET) && $_GET['action'] == 'paiement') : ?>
         <!-- stripe -->
         <script src="https://js.stripe.com/v3/"></script>
-        <script src="public/js/stripe.js"></script>
+        <script type="module" src="public/js/stripe.js"></script>
         <?php endif; ?>
 
     </body>

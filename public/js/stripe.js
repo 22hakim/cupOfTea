@@ -1,3 +1,8 @@
+import Refresh from './classes/utilities/Refresh.js';
+import Orders from './classes/order/Orders.js';
+
+const od = new Orders();
+
 document.addEventListener('DOMContentLoaded', ()=>{
 
     // mes variables 
@@ -29,7 +34,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
             if(result.error){
                 document.getElementById("errors").innerText = result.error.message
             }else{
-                document.location.href = 'index.php?action=success'
+                // je vide mon panier 
+                od.UpdatePayment();
+                new Refresh([]);
+                // document.location.href = 'index.php?action=success'
             }
         })
     })

@@ -40,9 +40,24 @@ export default class Order{
         document.location.href = `index.php?action=paiement&orderId=${orderId}`;
     }
 
-    UpdatePayment(amount,orderNumber) 
+    UpdatePayment() 
     {
+        const orderId = document.querySelector('h2 span').textContent;
+        const amount  = document.querySelector('#total-amount').dataset.amount
         // j'utiliserai cette fonction apres le paiement pour changer le champ paid a Yes 
         // et ajouter le montant
+
+        // j'ajoute la commande en ajax 
+        let formdata = new FormData()
+        formdata.append('action','update-order');
+        formdata.append(`order_id`,orderId);
+        formdata.append(`amount`,amount);
+        formdata.append(`paid`,'yes');
+
+        // envoi de la requete
+        fetch('index.php?ajax=req', { method : 'POST' , body :formdata})
+        .then(response => response.text())
+        .then(res => console.log(res))
+
     }
 }

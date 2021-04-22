@@ -49,6 +49,12 @@ if(array_key_exists('ajax',$_GET)){
         case 'save-order':
             $ajax->saveOrder($_POST);
         break;
+        case 'update-order':
+            $mes = $ajax->updateOrder($_POST);
+            echo $mes;
+        break;
+
+
 
     }
     

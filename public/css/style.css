@@ -708,7 +708,7 @@ form {
     padding :10px;
     border-radius:15px;
 }
-form div{
+form div:not(.StripeElement){
     display:flex;
     justify-content: space-between; 
     margin : 10px 20px;
